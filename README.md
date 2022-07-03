@@ -8,12 +8,6 @@ Should you have any ideas or questions please post them on the home-assistant fo
 * [Discussion on Home Assistant Community](https://community.home-assistant.io/t/new-dashboard-for-ha/57173)
 * [Demo Video](https://youtu.be/L8JwzWNAPr8)
 
-
-## :warning: Migrate from pre-1.0.0 version
-
-The project structure has changed in the first versioned (v1.0.0) release. Instead of checking out the repo, consider grabbing latest release from https://github.com/resoai/TileBoard/releases. For full setup instructions, see [How to use](#how-to-use) section.
-
-
 ## Screenshots
 
 ![screen](./images/screenshots/default.png)
@@ -23,18 +17,33 @@ The project structure has changed in the first versioned (v1.0.0) release. Inste
 
 ## How to use
 
-* Make sure that you have Home Assistant 0.77 or greater installed as only new authentication system is supported from now on
-* Download the latest release zip file (`Tileboard.zip`) from https://github.com/resoai/TileBoard/releases and unpack to a directory of your choice
-* In chosen directory rename `config.example.js` to `config.js` and adjust it for your needs
-* Optionally create an empty `styles/custom.css` file. Everything will work without it but there will be a network request error logged in the console which can be annoying to some.
-* Create a directory called `tileboard` inside `www` directory in HA's config path and copy all unpacked files there.
-* TileBoard will be available at `http://HASS_IP:8123/local/tileboard/index.html` and will prompt you for your login credentials after restarting Home Assistant.
+There are a couple of alternative ways of running TileBoard. The options are listed in the recommended order. First being the easiest and the most user friendly.
 
-Alternatively you can checkout the repo and build the app manually. Check [CONTRIBUTING](./CONTRIBUTING.md) for more info.
+### Run as a Home Assistant addon
 
-## WARNING
+By far the easiest option that also provides auto-update through Home Assistant Supervisor.
 
-Files served from the www folder (/local/ url), aren’t protected by the Home Assistant authentication. Files stored in this folder, if the URL is known, can be accessed by anybody without authentication. Please make sure that your HA instance is not exposed via inetrnet or at least that long-lived token is not hardcoded in the config.
+Installation instructions: refer to https://github.com/resoai/TileBoard-addon/blob/main/README.md#installation
+
+Check the instructions within the addon on how to edit and customize the configuration.
+
+### Run within a standalone server through Docker
+
+Runs a standalone local HTTP server, independently from the Home Assistant itself.
+
+Setup instructions: refer to https://github.com/resoai/TileBoard/blob/master/docker/README.md
+
+### Run within the public Home Assistant www directory
+
+1. Download the latest release zip file (`Tileboard.zip`) from https://github.com/resoai/TileBoard/releases and unpack to a directory of your choice. (Alternatively you can checkout the repo and build the app manually. Check [CONTRIBUTING](./CONTRIBUTING.md) for more info.)
+2. In chosen directory rename `config.example.js` to `config.js` and adjust it for your needs
+3. Optionally create an empty `styles/custom.css` file. Everything will work without it but there will be a network request error logged in the console which can be annoying to some.
+4. Create a directory called `tileboard` inside `www` directory in HA's config path and copy all unpacked files there.
+5. TileBoard will be available at `http://HASS_IP:8123/local/tileboard/index.html` and will prompt you for your login credentials after restarting Home Assistant.
+
+#### !!!WARNING!!!
+
+Files served from the `www` folder (`/local/` url), aren't protected by the Home Assistant authentication. Files stored in this folder, if the URL is known, can be accessed by anybody without authentication. Please make sure that your HA instance is not exposed via Internet or at least that long-lived token is not hardcoded in the config.
 
 ## Configure
 
@@ -140,11 +149,11 @@ var CONFIG = {
 
      /* read more in wiki */
      leftBottom: [{ type: SCREENSAVER_ITEMS.DATETIME }],
-     /* slides: Array of paths to pictures. */
+     /* slides: Array of paths to pictures and, optionally, associated CSS classes. */
      slides: [
-       {bg: 'images/bg1.jpeg'},
-       {bg: 'images/bg2.png'},
-       {bg: 'images/bg3.jpg'}
+       {bg: 'images/bg1.jpeg', classes:['-slide1']},
+       {bg: 'images/bg2.png', classes:['-slide2']},
+       {bg: 'images/bg3.jpg', classes:['-slide3']}
      ]
    },
 
@@ -153,6 +162,12 @@ var CONFIG = {
     * (optional)
     */
    header: DEFAULT_HEADER,
+
+   /* footer: Matching functionality of header, but at the bottom instead of the top
+    * https://github.com/resoai/TileBoard/wiki/Header-configuration
+    * (optional)
+    */
+   footer: DEFAULT_HEADER,
 }
 ```
 
@@ -694,6 +709,7 @@ This example will fire a persistent red notification on TileBoard when a specifi
 
 ## Custom CSS Styles
 Several classes are added to each tile depending on the type of tile and state. Custom CSS styles can be applied by creating a `custom.css` file in the `styles` directory.
+*Tip: If no style is applied after adding the file, make sure to disable cache in the browser as it may cache the previous empty `custom.css` file for a while.*
 
 ## Tablet and mobile configuration
 For the tablet configuration use `COMPACT` custom theme and reduce padding.

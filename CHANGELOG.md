@@ -2,6 +2,49 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.10.2](https://github.com/resoai/TileBoard/compare/v2.10.1...v2.10.2) (2022-06-30)
+
+
+### Bug Fixes
+
+* programmatic openPopup can end up with dead tiles ([#843](https://github.com/resoai/TileBoard/issues/843)) ([1a11c5a](https://github.com/resoai/TileBoard/commit/1a11c5a24bdad48f9ee04aae6eb7bf30de6f27cc))
+
+### [2.10.1](https://github.com/resoai/TileBoard/compare/v2.10.0...v2.10.1) (2022-06-20)
+
+
+### Bug Fixes
+
+* **webmanifest:** add start_url ([#838](https://github.com/resoai/TileBoard/issues/838)) ([eef5368](https://github.com/resoai/TileBoard/commit/eef536801a4d5a8ba3df54fc97e920b313faf0bb))
+
+## [2.10.0](https://github.com/resoai/TileBoard/compare/v2.9.0...v2.10.0) (2022-06-19)
+
+
+### Features
+
+* make tileboard installable as web apk ([#822](https://github.com/resoai/TileBoard/issues/822)) ([a1dd248](https://github.com/resoai/TileBoard/commit/a1dd248cea665ab760b254cacbcfb82dfd7a4cf8))
+
+## [2.9.0](https://github.com/resoai/TileBoard/compare/v2.8.0...v2.9.0) (2022-02-03)
+
+
+### Features
+
+* add optional footer, matching functionality of header ([#813](https://github.com/resoai/TileBoard/issues/813)) ([6979fcd](https://github.com/resoai/TileBoard/commit/6979fcddec08f696ec60b65e6d00aebf4f212c8f))
+* update dependency @mdi/font to v6 ([#766](https://github.com/resoai/TileBoard/issues/766)) ([384b49d](https://github.com/resoai/TileBoard/commit/384b49dd946b9f78a97e6a5e2e3b40a3b5d53191))
+
+## [2.8.0](https://github.com/resoai/TileBoard/compare/v2.7.0...v2.8.0) (2021-12-04)
+
+
+### Features
+
+* allow custom classes on screensaver slides ([#796](https://github.com/resoai/TileBoard/issues/796)) ([514abba](https://github.com/resoai/TileBoard/commit/514abba9f82819d1d6686b18bbb11b8e5df0bb06))
+
+## [2.7.0](https://github.com/resoai/TileBoard/compare/v2.6.5...v2.7.0) (2021-11-22)
+
+
+### Features
+
+* create docker images for standalone use ([#793](https://github.com/resoai/TileBoard/issues/793)) ([73a854e](https://github.com/resoai/TileBoard/commit/73a854e9d121a22b040ff88a126ba00bd30e0f30))
+
 ### [2.6.5](https://github.com/resoai/TileBoard/compare/v2.6.4...v2.6.5) (2021-10-28)
 
 
